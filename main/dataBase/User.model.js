@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
-const mongooseDelete = require('mongoose-delete');
+
+const deleteMon = require('mongoose-delete');
 
 const { dataBaseEnum } = require('../constants');
 
@@ -17,7 +18,6 @@ const userSchema = new Schema({
 
     email: {
         type: String,
-        unique: true,
         required: true
     },
 
@@ -42,11 +42,11 @@ const userSchema = new Schema({
 
     forgot_token: {
         type: String
-    },
+    }
 
 }, { timestamps: true, toObject: { virtuals: true }, toJSON: { virtuals: true } });
 
-userSchema.plugin(mongooseDelete, {
+userSchema.plugin(deleteMon, {
     overrideMethods: 'all',
     deletedAt: true
 });

@@ -19,11 +19,11 @@ module.exports = async (req, res, next) => {
         if (error) {
             throw new ErrorHandler(codesEnum.NOT_FOUND, error.details[0].message, errorMess.USER_NOT_FOUND.code);
         }
-
+        console.log('d');
         if (user) {
             throw new ErrorHandler(codesEnum.CONFLICT, errorMess.NOT_EXISTS.message, errorMess.NOT_EXISTS.code);
         }
-
+        console.log('d');
         req.user = userObject;
 
         next();

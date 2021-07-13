@@ -5,5 +5,6 @@ module.exports = {
     activateToken: require('./check-is-activate-token'),
     forgotToken: require('./check-is-forgot-password'),
     emailValidIsCreatForgotToken: require('./check-is-email-create-forgot-token'),
-    changePassword: require('./check-is-changePassword')
+    changePassword: require('./check-is-changePassword'),
+    checkNumber: require('./check-is-number-valid')
 };

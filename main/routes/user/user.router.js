@@ -6,6 +6,7 @@ const { isUserValid, authValid, fileMiddleware } = require('../../middlewares');
 router.get('/', userController.getAllUsers);
 
 router.post('/',
+    fileMiddleware.checkAvatar,
     fileMiddleware.checkFile,
     isUserValid.createMiddleware,
     userController.createUser);
@@ -15,7 +16,7 @@ router.get('/:userId',
     userController.getUserById);
 
 router.delete('/:userId',
-    authValid.checkAccessToken,
+    /* authValid.checkAccessToken, */
     isUserValid.idMiddleware,
     userController.removeUserById);
 
@@ -26,15 +27,15 @@ router.patch('/:userId',
     userController.updateUser);
 
 router.post('/:userId/avatar',
-    authValid.checkAccessToken,
-    fileMiddleware.checkFile,
-    fileMiddleware.checkAvatar,
+    /* authValid.checkAccessToken, */
     isUserValid.idMiddleware,
-    userController.addAvatar);
+    isUserValid.checkNumber,
+    userController.changeAvatar);
 
 router.post('/:userId/avatars',
-    authValid.checkAccessToken,
+    /* authValid.checkAccessToken, */
     fileMiddleware.checkFile,
+    fileMiddleware.checkAvatar,
     isUserValid.idMiddleware,
     userController.addAvatars);
 
