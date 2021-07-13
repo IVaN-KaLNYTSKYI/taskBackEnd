@@ -15,7 +15,7 @@ router.get('/:userId',
     userController.getUserById);
 
 router.delete('/:userId',
-    /* authValid.checkAccessToken, */
+    authValid.checkAccessToken,
     isUserValid.idMiddleware,
     userController.removeUserById);
 
@@ -39,6 +39,7 @@ router.post('/:userId/avatars',
     userController.addGallery);
 
 router.post('/forgotPassword',
+    authValid.checkAccessToken,
     isUserValid.forgotToken,
     userController.forgotPassword);
 
