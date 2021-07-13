@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const mongooseDelete = require('mongoose-delete');
 
 const { dataBaseEnum } = require('../constants');
 
@@ -44,5 +45,10 @@ const userSchema = new Schema({
     },
 
 }, { timestamps: true, toObject: { virtuals: true }, toJSON: { virtuals: true } });
+
+userSchema.plugin(mongooseDelete, {
+    overrideMethods: 'all',
+    deletedAt: true
+});
 
 module.exports = model(dataBaseEnum.USER, userSchema);
