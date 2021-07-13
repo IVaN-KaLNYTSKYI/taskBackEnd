@@ -5,5 +5,5 @@ module.exports = {
     getSingleUser: (params) => User.findOne(params),
     createUser: (objectUser) => User.create(objectUser),
     updateUser: (userId, updateBody) => User.updateOne({ _id: userId }, updateBody),
-    removeUser: (id) => User.deleteOne({ _id: id }),
+    removeUser: (id) => User.delete({ _id: id }),
 };

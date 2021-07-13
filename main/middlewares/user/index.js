@@ -4,5 +4,6 @@ module.exports = {
     idMiddleware: require('./check-is-id-valid.middleware'),
     activateToken: require('./check-is-activate-token'),
     forgotToken: require('./check-is-forgot-password'),
-    emailValidIsCreatForgotToken: require('./check-is-email-create-forgot-token')
+    emailValidIsCreatForgotToken: require('./check-is-email-create-forgot-token'),
+    changePassword: require('./check-is-changePassword')
 };

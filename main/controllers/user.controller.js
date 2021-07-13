@@ -184,6 +184,20 @@ module.exports = {
 
             await userService.updateUser({ _id }, { password: hashedPassword });
 
+            res.json('update-password-forgot');
+        } catch (e) {
+            next(e);
+        }
+    },
+
+    changePassword: async (req, res, next) => {
+        try {
+            const { user: { _id }, body: { newPassword } } = req;
+
+            const hashedPassword = await passwordHasher.hash(newPassword);
+
+            await userService.updateUser({ _id }, { password: hashedPassword });
+
             res.json('update-password');
         } catch (e) {
             next(e);
