@@ -1,0 +1,8 @@
+extends template
+block content
+    div
+        | Welcome #{userName}-you registered using Email:#{email}
+        br
+        | Please follow the link
+        - let url = 'http://localhost:3000/email/activate?token='
+        a(href=url + token) Clikkk
