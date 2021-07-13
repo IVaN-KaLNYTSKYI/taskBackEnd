@@ -36,7 +36,7 @@ router.post('/:userId/avatars',
     authValid.checkAccessToken,
     fileMiddleware.checkFile,
     isUserValid.idMiddleware,
-    userController.addGallery);
+    userController.addAvatars);
 
 router.post('/forgotPassword',
     authValid.checkAccessToken,

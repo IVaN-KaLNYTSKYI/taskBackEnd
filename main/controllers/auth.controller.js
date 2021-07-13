@@ -27,6 +27,7 @@ module.exports = {
             const token = req.get(AUTHORIZATION);
 
             await OAuth.remove({ accessToken: token });
+
             res.status(codesEnum.NO_CONTENT).json('Success');
         } catch (e) {
             next(e);

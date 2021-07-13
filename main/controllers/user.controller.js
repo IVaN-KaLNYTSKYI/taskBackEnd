@@ -151,7 +151,7 @@ module.exports = {
         }
     },
 
-    addGallery: async (req, res, next) => {
+    addAvatars: async (req, res, next) => {
         try {
             const { user, photos } = req;
 

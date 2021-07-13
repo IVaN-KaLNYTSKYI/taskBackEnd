@@ -9,8 +9,6 @@ module.exports = {
     TIME_REFRESH_TOKEN: '30d',
     ACCESS: 'access',
     REFRESH: 'refresh',
-    FORGOT: 'Forgot',
-    PASSWORD: 'Password',
     EMAIL: process.env.EMAIL || 'ivankal@gmail.com',
     PASSWORD_EMAIL: process.env.PASSWORD_EMAIL || 'EWRWFEFD',
     ACTIVATE_TOKEN_SECRET: process.env.ACTIVATE_TOKEN_SECRET || 'efmefirfmemfregrgergrge'
