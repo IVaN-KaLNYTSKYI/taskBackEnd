@@ -59,7 +59,11 @@ module.exports = {
                 await userService.updateUser({ _id }, { $set: { avatars: photosArr } });
             }
 
-            await mailService.sendMail(email, emailActionEnum.WELCOME, { userName: name, token: createdUser.activate_token });
+            await mailService.sendMail(
+                email,
+                emailActionEnum.WELCOME,
+                { userName: name, token: createdUser.activate_token, email }
+            );
 
             const normalizedUser = userHelper.userNormalizator(createdUser.toJSON());
 

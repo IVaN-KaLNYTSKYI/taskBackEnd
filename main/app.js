@@ -22,12 +22,12 @@ app.use('/', apiRouter);
 app.use(_hadleErrors);
 
 app.listen(constants.PORT, () => {
-    console.log(constants.PORT);
+    console.log(`port:${constants.PORT}`);
 });
 
 function _connectDB() {
     mongoose.connect(constants.DB, { useNewUrlParser: true, useUnifiedTopology: true })
-        .then(() => console.log('bd ok'))
+        .then(() => console.log('mood very well'))
         .catch((eror) => console.log(eror));
 }
 
