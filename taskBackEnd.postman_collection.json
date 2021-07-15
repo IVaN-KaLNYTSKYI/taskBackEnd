@@ -219,7 +219,7 @@
 			"response": []
 		},
 		{
-			"name": "avatar",
+			"name": "changeAvatar",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -230,6 +230,37 @@
 							"key": "number",
 							"value": "1",
 							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/60ead8732173bf05068d401e/avatar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"60ead8732173bf05068d401e",
+						"avatar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "avatar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": []
 						}
 					]
 				},
