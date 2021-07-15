@@ -144,6 +144,28 @@ module.exports = {
         }
     },
 
+    addAvatar: async (req, res, next) => {
+        try {
+            const { avatar, user } = req;
+
+            const { _id, avatars } = user;
+
+            const photosArr = [...avatars];
+
+            if (avatar) {
+                const { finalPath, photoPath } = await fileHelpers.fileDownload(avatar.name, _id, 'users', 'avatars');
+
+                await avatar.mv(finalPath);
+
+                await userService.updateUser({ _id }, { avatar: photoPath, avatars: photosArr });
+            }
+
+            res.json(user);
+        } catch (e) {
+            next(e);
+        }
+    },
+
     forgotPassword: async (req, res, next) => {
         try {
             const { user: { _id }, headers: { password } } = req;

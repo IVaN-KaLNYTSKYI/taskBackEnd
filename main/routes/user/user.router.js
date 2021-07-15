@@ -16,7 +16,7 @@ router.get('/:userId',
     userController.getUserById);
 
 router.delete('/:userId',
-    /* authValid.checkAccessToken, */
+    authValid.checkAccessToken,
     isUserValid.idMiddleware,
     userController.removeUserById);
 
@@ -27,13 +27,20 @@ router.patch('/:userId',
     userController.updateUser);
 
 router.post('/:userId/avatar',
-    /* authValid.checkAccessToken, */
+    authValid.checkAccessToken,
+    fileMiddleware.checkFile,
+    fileMiddleware.checkAvatar,
+    isUserValid.idMiddleware,
+    userController.addAvatar);
+
+router.post('/:userId/changeAvatar',
+    authValid.checkAccessToken,
     isUserValid.idMiddleware,
     isUserValid.checkNumber,
     userController.changeAvatar);
 
 router.post('/:userId/avatars',
-    /* authValid.checkAccessToken, */
+    authValid.checkAccessToken,
     fileMiddleware.checkFile,
     fileMiddleware.checkAvatar,
     isUserValid.idMiddleware,
