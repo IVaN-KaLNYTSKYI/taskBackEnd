@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 require('dotenv').config({ path: '../.env' });
 
 const { constants } = require('./constants');
-const { apiRouter } = require('./routes');
+const { apiRouter, notFound } = require('./routes');
 
 const app = express();
 
@@ -18,6 +18,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 
 app.use(fileUpload({}));
 app.use('/', apiRouter);
+app.use('*', notFound);
 
 app.use(_hadleErrors);
 
@@ -26,7 +27,7 @@ app.listen(constants.PORT, () => {
 });
 
 function _connectDB() {
-    mongoose.connect(constants.DB, { useNewUrlParser: true, useUnifiedTopology: true })
+    mongoose.connect(constants.DB, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
         .then(() => console.log('mood very well'))
         .catch((eror) => console.log(eror));
 }
@@ -37,6 +38,7 @@ function _hadleErrors(err, req, res, next) {
         .status(err.status)
         .json({
             message: err.message || 'Unknown error',
-            customCode: err.code || 0
+            customCode: err.codes || 0
         });
 }
+
